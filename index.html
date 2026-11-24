@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ForensicCase digital forensics training dashboard">
+    <title>ForensicCase | Digital Forensics Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <a class="brand" href="#" aria-label="ForensicCase home"><span class="brand-mark">F</span> ForensicCase</a>
+        <nav id="main-nav" class="main-nav" aria-label="Main navigation">
+            <a href="#case">Case</a><a href="#evidence">Evidence</a><a href="#examination">Examination</a>
+            <a href="#timeline">Timeline</a><a href="#findings">Findings</a><a href="#report">Report</a>
+        </nav>
+        <div class="header-actions">
+            <span id="welcome-user" class="welcome-user"></span>
+            <button id="logout-button" class="button button-outline small hidden" type="button">Log out</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="auth-screen" class="auth-screen">
+            <div class="auth-intro">
+                <span class="eyebrow">DIGITAL FORENSICS • EVIDENCE • INVESTIGATION</span>
+                <h1>Investigate with <span>confidence.</span></h1>
+                <p>A training dashboard for documenting evidence preservation, forensic examination, event
+                    reconstruction and investigative findings.</p>
+                <div class="auth-points">
+                    <div><strong>01</strong><span>Evidence integrity</span></div>
+                    <div><strong>02</strong><span>Chain of custody</span></div>
+                    <div><strong>03</strong><span>Clear reporting</span></div>
+                </div>
+            </div>
+            <section class="auth-card" aria-label="Account access">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" id="login-tab" type="button">Log in</button>
+                    <button class="auth-tab" id="register-tab" type="button">Create account</button>
+                </div>
+                <form id="login-form" class="auth-form">
+                    <h2>Welcome back</h2>
+                    <p class="muted">Log in to open your investigation dashboard.</p>
+                    <label for="login-email">Email address</label>
+                    <input id="login-email" type="email" autocomplete="username" placeholder="you@example.com" required>
+                    <label for="login-password">Password</label>
+                    <input id="login-password" type="password" autocomplete="current-password"
+                        placeholder="Enter your password" required>
+                    <button class="button button-primary full" type="submit">Log in to dashboard</button>
+                    <p id="login-message" class="form-message" role="alert"></p>
+                </form>
+                <form id="register-form" class="auth-form hidden">
+                    <h2>Create your account</h2>
+                    <p class="muted">Register to access the training dashboard.</p>
+                    <label for="register-name">Full name</label>
+                    <input id="register-name" type="text" autocomplete="name" placeholder="Your full name" required
+                        minlength="2">
+                    <label for="register-email">Email address</label>
+                    <input id="register-email" type="email" autocomplete="email" placeholder="you@example.com" required>
+                    <label for="register-password">Password</label>
+                    <input id="register-password" type="password" autocomplete="new-password"
+                        placeholder="At least 8 characters" required minlength="8">
+                    <label for="register-confirm">Confirm password</label>
+                    <input id="register-confirm" type="password" autocomplete="new-password"
+                        placeholder="Enter password again" required minlength="8">
+                    <button class="button button-primary full" type="submit">Create account</button>
+                    <p id="register-message" class="form-message" role="alert"></p>
+                </form>
+            </section>
+        </section>
+
+        <div id="dashboard" class="hidden">
+            <section class="hero section">
+                <div class="container hero-grid">
+                    <div>
+                        <span class="eyebrow">FORENSIC TRAINING INVESTIGATION</span>
+                        <h1>Digital Forensics<br><span>Investigation Dashboard</span></h1>
+                        <p class="lead">A structured examination of an authorised sample disk image, documenting
+                            evidence integrity, forensic analysis, event reconstruction and investigative findings.</p>
+                        <a class="button button-primary" href="#report">View forensic report</a>
+                        <div class="stats">
+                            <div class="stat"><strong>01</strong><span>Training disk image</span></div>
+                            <div class="stat"><strong>SHA-256</strong><span>Hash method</span></div>
+                            <div class="stat"><strong>04</strong><span>Core stages</span></div>
+                            <div class="stat"><strong>DFIR-001</strong><span>Sample case ID</span></div>
+                        </div>
+                    </div>
+                    <aside class="card case-snapshot">
+                        <span class="eyebrow">CASE SNAPSHOT</span>
+                        <h2>DFIR-2026-001</h2>
+                        <dl>
+                            <div>
+                                <dt>Evidence</dt>
+                                <dd>Sample disk image</dd>
+                            </div>
+                            <div>
+                                <dt>Source</dt>
+                                <dd>Authorised training dataset</dd>
+                            </div>
+                            <div>
+                                <dt>Investigator</dt>
+                                <dd>Praise Ronnex Mtafya</dd>
+                            </div>
+                            <div>
+                                <dt>Status</dt>
+                                <dd><span class="status">Training example</span></dd>
+                            </div>
+                        </dl>
+                        <p class="hash-label">Illustrative SHA-256 value</p>
+                        <code
+                            class="hash">Example only — replace with a hash calculated from the actual evidence image.</code>
+                    </aside>
+                </div>
+            </section>
+
+            <section id="case" class="section container">
+                <span class="eyebrow">CASE OVERVIEW</span>
+                <h2>Investigation objective and scope</h2>
+                <div class="grid-two">
+                    <article class="card">
+                        <h3>Case scenario</h3>
+                        <p>A sample disk image is used for an educational digital-forensics investigation. The scenario
+                            concerns a suspected unauthorised file transfer from a workstation to external storage.</p>
+                        <p>The investigator preserves the evidence, examines relevant artefacts, reconstructs activity
+                            and prepares a forensic report.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Investigation scope</h3>
+                        <ul>
+                            <li>Verify disk-image integrity</li>
+                            <li>Maintain chain of custody</li>
+                            <li>Identify files and metadata</li>
+                            <li>Review logs and user activity</li>
+                            <li>Create an event timeline</li>
+                            <li>Document findings and limitations</li>
+                        </ul>
+                    </article>
+                </div>
+                <div class="notice"><strong>Legal and ethical notice:</strong> Use only a legally obtained forensic
+                    training dataset or instructor-authorised sample image. Do not access live systems or private data
+                    without proper authority.</div>
+            </section>
+
+            <section id="evidence" class="section section-alt">
+                <div class="container"><span class="eyebrow">EVIDENCE HANDLING</span>
+                    <h2>Preservation and chain of custody</h2>
+                    <div class="grid-two">
+                        <article class="card">
+                            <h3>Evidence register</h3>
+                            <div class="table-wrap">
+                                <table>
+                                    <tr>
+                                        <th>Field</th>
+                                        <th>Sample value</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Evidence ID</td>
+                                        <td>EVD-001</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Type</td>
+                                        <td>Disk image</td>
+                                    </tr>
+                                    <tr>
+                                        <td>File</td>
+                                        <td><code>training_image.E01</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hash algorithm</td>
+                                        <td>SHA-256</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Status</td>
+                                        <td>Example record</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </article>
+                        <article class="card">
+                            <h3>Chain of custody log</h3>
+                            <div class="table-wrap">
+                                <table>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    <tr>
+                                        <td>09:00</td>
+                                        <td>Received evidence image</td>
+                                    </tr>
+                                    <tr>
+                                        <td>09:15</td>
+                                        <td>Calculated hash</td>
+                                    </tr>
+                                    <tr>
+                                        <td>09:30</td>
+                                        <td>Created working copy</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10:00</td>
+                                        <td>Loaded into forensic tool</td>
+                                    </tr>
+                                    <tr>
+                                        <td>14:00</td>
+                                        <td>Secured evidence and notes</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </article>
+                    </div>
+                    <article class="card top-gap">
+                        <h3>Evidence integrity</h3>
+                        <p>Calculate the SHA-256 hash of the acquired image and verify it after acquisition. Keep the
+                            original secure and conduct examination on a verified working copy.</p><span
+                            class="tag">Enter real calculated values in your final report</span>
+                    </article>
+                </div>
+            </section>
+
+            <section id="examination" class="section container">
+                <span class="eyebrow">FORENSIC EXAMINATION</span>
+                <h2>Tools, procedures and artefacts</h2>
+                <div class="grid-four">
+                    <article class="card">
+                        <h3>FTK Imager</h3>
+                        <p>Forensic imaging, preview and hash verification.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Autopsy</h3>
+                        <p>File recovery, keyword searches and timeline analysis.</p>
+                    </article>
+                    <article class="card">
+                        <h3>The Sleuth Kit</h3>
+                        <p>File-system and metadata examination.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Wireshark</h3>
+                        <p>Network packet and protocol analysis.</p>
+                    </article>
+                </div>
+                <article class="card top-gap">
+                    <h3>Examination procedure</h3>
+                    <ol class="steps">
+                        <li>Receive and securely store evidence.</li>
+                        <li>Calculate and record the SHA-256 hash.</li>
+                        <li>Create and verify a working copy.</li>
+                        <li>Load the copy into an appropriate forensic tool.</li>
+                        <li>Review file systems, metadata and logs.</li>
+                        <li>Search relevant keywords and artefacts.</li>
+                        <li>Build a timeline and export supported findings.</li>
+                    </ol>
+                </article>
+            </section>
+
+            <section id="timeline" class="section section-alt">
+                <div class="container"><span class="eyebrow">EVENT RECONSTRUCTION</span>
+                    <h2>Illustrative investigation timeline</h2>
+                    <div class="timeline">
+                        <article class="event"><time>08:42</time>
+                            <div class="card">
+                                <h3>User account activity</h3>
+                                <p>Example: an artefact associated with the selected user profile is identified.</p>
+                                <span class="tag">Registry artefact</span>
+                            </div>
+                        </article>
+                        <article class="event"><time>08:47</time>
+                            <div class="card">
+                                <h3>Document accessed</h3>
+                                <p>Example: file metadata indicates a relevant document was opened.</p><span
+                                    class="tag">File metadata</span>
+                            </div>
+                        </article>
+                        <article class="event"><time>09:03</time>
+                            <div class="card">
+                                <h3>External device connected</h3>
+                                <p>Example: system artefacts indicate external-storage connection activity.</p><span
+                                    class="tag">System artefact</span>
+                            </div>
+                        </article>
+                        <article class="event"><time>09:11</time>
+                            <div class="card">
+                                <h3>Possible file transfer</h3>
+                                <p>Example: file-system artefacts are reviewed for evidence of copying.</p><span
+                                    class="tag">File-system artefact</span>
+                            </div>
+                        </article>
+                        <article class="event"><time>09:20</time>
+                            <div class="card">
+                                <h3>File deletion activity</h3>
+                                <p>Example: a deleted-file artefact is identified for examination.</p><span
+                                    class="tag">Deleted-file artefact</span>
+                            </div>
+                        </article>
+                    </div>
+                    <p class="tiny-note">Times and events above are illustrative training content, not verified findings
+                        from an actual disk image.</p>
+                </div>
+            </section>
+
+            <section id="findings" class="section container">
+                <span class="eyebrow">INVESTIGATION FINDINGS</span>
+                <h2>Key findings and conclusion</h2>
+                <div class="grid-four">
+                    <article class="card">
+                        <h3>Integrity</h3>
+                        <p>Compare actual source and acquired-image hashes.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Files</h3>
+                        <p>Record relevant files, paths and metadata.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Timeline</h3>
+                        <p>Correlate timestamps and explain time-zone assumptions.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Recovery</h3>
+                        <p>Document recovered artefacts and recovery limitations.</p>
+                    </article>
+                </div>
+                <div class="report-panel">
+                    <h3>Investigative conclusion</h3>
+                    <p>Present only conclusions supported by artefacts from the examined training image. Separate direct
+                        observations from interpretations, explain alternative explanations and disclose limitations. Do
+                        not present sample data as verified evidence.</p>
+                </div>
+            </section>
+
+            <section id="report" class="section section-alt">
+                <div class="container"><span class="eyebrow">FINAL DELIVERABLE</span>
+                    <h2>Forensic investigation report</h2>
+                    <div class="card report-card">
+                        <div>
+                            <h3>Suggested report contents</h3>
+                            <ul>
+                                <li>Executive summary and scope</li>
+                                <li>Evidence register and hash values</li>
+                                <li>Chain-of-custody records</li>
+                                <li>Tools, methods and versions</li>
+                                <li>Examination screenshots and artefacts</li>
+                                <li>Event timeline</li>
+                                <li>Findings, limitations and recommendations</li>
+                            </ul>
+                        </div><a class="button button-primary" href="documents/forensic-report.pdf" download>Download
+                            full report (add PDF)</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">© 2026 ForensicCase • Digital ForensicsInvestgation Presented by Praise Ronnex
+            Mtafya, BSc • Student ID: 23311351022</div>
+    </footer>
+</body>
+
+</html>
